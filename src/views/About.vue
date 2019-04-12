@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Hello,Vue</h1>
+    <h1>真夏の夜の.inc</h1>
     <p v-if="msg.length > 0">
       {{msg}}
     </p>
@@ -17,7 +17,7 @@ export default {
     name: 'about',
     data(){
       return{
-        msg: 'Hellor Vue.js!'
+        msg: 'margarineちゃんのえっちないえ'
       }
     },
     methods:{
