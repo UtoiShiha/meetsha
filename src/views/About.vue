@@ -32,7 +32,14 @@ export default {
       this.msg = ''
     },
     test(){
-      this.unchi='負け！w'
+      let max = 10;
+      let min = 0;
+      let num =  Math.random() * (max - min) + min;
+      if(num > 5){
+        this.unchi='勝ち！w'
+      }else{
+        this.unchi='負け！w'
+      }
     }
   }
 }
