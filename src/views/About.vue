@@ -15,6 +15,7 @@
           <button @click="test()">中日の次の試合は。。。？</button>
     </p>
     <p>{{unchi}}</p>
+    <p>w{{winCount}}:l{{loseCount}}</p>
   </div>
 </template>
 
@@ -24,7 +25,9 @@ export default {
     data(){
       return{
         msg: 'margarineちゃんのえっちないえ',
-        unchi:''
+        unchi:'',
+        winCount:0,
+        loseCount:0,
       }
     },
     methods:{
@@ -37,8 +40,10 @@ export default {
       let num =  Math.random() * (max - min) + min;
       if(num > 5){
         this.unchi='勝ち！w'
+        this.winCount++;
       }else{
         this.unchi='負け！w'
+        this.loseCount++;
       }
     }
   }
