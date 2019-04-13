@@ -6,7 +6,11 @@
         <p v-if="mode == 1"><img src="https://twemoji.maxcdn.com/2/72x72/1f914.png" alt=""></p>
         <p>{{res}}</p>
 
-        <!-- <p>{{users}}</p> -->
+        <p>{{users}}</p>
+        <svg width="100%" height="300%">
+            <circle :r="r" cx="150" cy="75" stroke="black" stroke-width="1" fill="fill" />
+        </svg>
+        <button v-on:click="feed()">育てる</button>
   </div>
 </template>
 
@@ -20,7 +24,8 @@ export default {
           baseURI:"https://jlp.yahooapis.jp/NLUService/V1/analyze?appid=dj00aiZpPUZ4aU8xRTVwM1lmMyZzPWNvbnN1bWVyc2VjcmV0Jng9NTM-&intext=",
           response:"",
           res:"",
-          mode:0
+          mode:0,
+          r:5
       }
     },
     mounted(){
@@ -40,6 +45,9 @@ export default {
                     }
                 })
         },
+        feed(){
+            this.r += 5;
+        }
   }
 }
 </script>
