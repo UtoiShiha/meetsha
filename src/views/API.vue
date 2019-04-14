@@ -61,7 +61,7 @@ export default {
         },
         getNeetInfo(){
             this.record=[];
-            let url = "http://neetsha.jp/inside/api/v0/comic.php";
+            let url = "https://neetsha.jp/inside/api/v0/comic.php";
             this.$http.get(url).then(result => {
                     let test ="aa";
                     this.neet = result.data.split('\n',50);
@@ -76,9 +76,9 @@ export default {
                         record.link = "http://neetsha.in/"+buffer[0];
                         record.author = buffer[5];
                         if(buffer[buffer.length - 2] != ""){
-                            record.thumb = "http://neetsha.jp/inside/up/"+record.id.slice(0,1)+"/"+record.id.slice(1,2)+"/"+record.id+"/"+buffer[buffer.length - 2];
+                            record.thumb = "https://neetsha.jp/inside/up/"+record.id.slice(0,1)+"/"+record.id.slice(1,2)+"/"+record.id+"/"+buffer[buffer.length - 2];
                         }else{
-                             record.thumb = "http://neetel.neetsha.com/image/default_thumb.gif";
+                             record.thumb = "https://neetel.neetsha.com/image/default_thumb.gif";
                         }
                         record.update = buffer[buffer.length - 1];
                         this.record.push(record);
