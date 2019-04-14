@@ -78,7 +78,7 @@ export default {
                         if(buffer[buffer.length - 2] != ""){
                             record.thumb = "https://neetsha.jp/inside/up/"+record.id.slice(0,1)+"/"+record.id.slice(1,2)+"/"+record.id+"/"+buffer[buffer.length - 2];
                         }else{
-                             record.thumb = "https://neetel.neetsha.com/image/default_thumb.gif";
+                             record.thumb = "http://neetel.neetsha.com/image/default_thumb.gif";
                         }
                         record.update = buffer[buffer.length - 1];
                         this.record.push(record);
