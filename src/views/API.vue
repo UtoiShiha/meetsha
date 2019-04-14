@@ -11,6 +11,14 @@
             <circle :r="r" cx="150" cy="75" stroke="black" stroke-width="1" fill="fill" />
         </svg>
         <button v-on:click="feed()">育てる</button>
+        
+        <p><button v-on:click="getNeetInfo()">NeetSha</button></p>
+        <ul id="example-1">
+            <li v-for="item in record">
+                <a :href="item.link"><img :src="item.thumb" alt=""></a><br>
+                {{item.title}}<br>{{item.author}}
+            </li>
+        </ul>
   </div>
 </template>
 
@@ -25,11 +33,14 @@ export default {
           response:"",
           res:"",
           mode:0,
-          r:5
+          r:5,
+          neet:"",
+          test:[],
+          record:[]          
       }
     },
     mounted(){
-
+        this.getNeetInfo();
     },
     methods:{
         getRes(text){
@@ -45,6 +56,32 @@ export default {
                     }
                 })
         },
+        getNeetInfo(){
+            this.record=[];
+            let url = "http://neetsha.jp/inside/api/v0/comic.php";
+            this.$http.get(url).then(result => {
+                    let test ="aa";
+                    this.neet = result.data.split('\n',50);
+                    let count =0;
+                    this.neet.forEach(element => {
+                        let buffer = element.split("\t");
+                        if(buffer[0] == 0){return;}
+                        let record={};
+                        record.id = buffer[0];
+                        record.code = buffer[1];
+                        record.title = buffer[2];
+                        record.link = "http://neetsha.in/"+buffer[0];
+                        record.author = buffer[5];
+                        if(buffer[buffer.length - 2] != ""){
+                            record.thumb = "http://neetsha.jp/inside/up/"+record.id.slice(0,1)+"/"+record.id.slice(1,2)+"/"+record.id+"/"+buffer[buffer.length - 2];
+                        }else{
+                             record.thumb = "http://neetel.neetsha.com/image/default_thumb.gif";
+                        }
+                        record.update = buffer[buffer.length - 1];
+                        this.record.push(record);
+                    });
+            });
+        },
         feed(){
             this.r += 5;
         }
@@ -53,4 +90,11 @@ export default {
 </script>
 
 <style>
+    li{
+        list-style: none;
+        float:left;
+        display: inline-block;
+        width: 30%;
+        overflow: hidden;
+    }
 </style>
