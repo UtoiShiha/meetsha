@@ -5,6 +5,9 @@
         <p v-if="mode == 0"><img src="https://twemoji.maxcdn.com/2/72x72/1f600.png" alt=""></p>
         <p v-if="mode == 1"><img src="https://twemoji.maxcdn.com/2/72x72/1f914.png" alt=""></p>
         <p>{{res}}</p>
+<!-- Begin Yahoo! JAPAN Web Services Attribution Snippet -->
+<span style="margin:15px 15px 15px 15px"><a href="https://developer.yahoo.co.jp/about">Web Services by Yahoo! JAPAN</a></span>
+<!-- End Yahoo! JAPAN Web Services Attribution Snippet -->
 
         <p>{{users}}</p>
         <svg width="100%" height="300%">
